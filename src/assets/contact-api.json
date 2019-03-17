@@ -4,34 +4,6 @@
         "lastname": "Doe",
         "contacts": [
             {
-                "contact": "8092222222",
-                "contactType": 1
-            },
-            {
-                "contact": "8092222222",
-                "contactType": 1
-            }
-        ]
-    },
-    {
-        "name": "John",
-        "lastname": "Doe",
-        "contacts": [
-            {
-                "contact": "8092222222",
-                "contactType": 1
-            },
-            {
-                "contact": "8092222222",
-                "contactType": 1
-            }
-        ]
-    },
-    {
-        "name": "John",
-        "lastname": "Doe",
-        "contacts": [
-            {
                 "contact": "809-222-2222",
                 "contactType": 1
             },

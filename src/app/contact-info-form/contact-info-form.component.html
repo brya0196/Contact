@@ -1,0 +1,20 @@
+<form>
+  <div class="row">
+    <div class="form-group col-12">
+      <label>Name</label>
+      <input type="text" class="form-control rounded-0" />
+    </div>
+
+    <div class="form-group col-12">
+      <label>Last Name</label>
+      <input type="text" class="form-control rounded-0" />
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-sm rounded-0 btn-primary" (click)="newContact();">Add new contact</button>
+  
+  <div *ngFor="let contact of contacts">
+    <app-contact-form [contact]="contact"></app-contact-form>
+  </div>
+  
+</form>
