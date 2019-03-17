@@ -1,7 +1,7 @@
 <h1>Contacts</h1>
 
 <div class="row justify-content-center">
-    <app-contact-info-form class="col-5" [contactInfo]="contactInfo" (addNewContactInfo)="addNewContactInfo($event)" (cleanUpdate)="cleanContactInfo($event)"></app-contact-info-form>
+    <app-contact-info-form class="col-5" [contactInfo]="contactInfo" [isUpdate]="isUpdate" (addNewContactInfo)="addNewContactInfo($event)" (cleanUpdate)="cleanContactInfo($event)"></app-contact-info-form>
 </div>
 
 <div class="row mt-1">

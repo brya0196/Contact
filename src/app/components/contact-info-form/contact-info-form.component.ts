@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChange, SimpleChanges } from '@angular/core';
 import { IContact } from '../../interfaces/icontact';
 import { Icontactinfo } from '../../interfaces/icontactinfo';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -8,9 +8,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   templateUrl: './contact-info-form.component.html',
   styleUrls: ['./contact-info-form.component.css']
 })
-export class ContactInfoFormComponent implements OnInit {
+export class ContactInfoFormComponent implements OnChanges, OnInit {
 
-  @Input() contactInfo: Icontactinfo
+  @Input() contactInfo: Icontactinfo;
+  @Input() isUpdate: boolean;
   @Output() addNewContactInfo = new EventEmitter();
   @Output() cleanUpdate = new EventEmitter();
 
@@ -24,7 +25,44 @@ export class ContactInfoFormComponent implements OnInit {
       name: ['', Validators.required],
       lastname: ['', Validators.required]
     });
-    if (!this.contactInfo) this.cleanForm();
+    this.cleanForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const contactInfo: SimpleChange = changes.contactInfo;
+    if (contactInfo.currentValue) {
+      this.contactInfoForm.setValue({ name: contactInfo.currentValue.name, lastname: contactInfo.currentValue.lastname });
+    }
+  }
+
+  get formControls() { return this.contactInfoForm.controls; }
+
+  cleanForm() {
+    this.submitted = false;
+    const newContact:Icontactinfo = { name: null, lastname: null, contacts: [] };
+    this.contactInfoForm.setValue({ name: newContact.name, lastname: newContact.lastname });
+    this.contactInfo = newContact;
+  }
+
+  submit() {
+    this.submitted = true;
+
+    if (this.contactInfoForm.valid) {
+
+      this.contactInfo.name = this.contactInfoForm.get("name").value;
+      this.contactInfo.lastname = this.contactInfoForm.get("lastname").value;
+
+      console.log(this.isUpdate);
+      if (!this.isUpdate) {
+        this.addNewContactInfo.emit(this.contactInfo);
+      }
+      this.cancel();
+    }
+  }
+
+  cancel() {
+    this.cleanForm();
+    this.cleanUpdate.emit({ contact: { name: null, lastname: null, contacts: [] }, isUpdate: false });
   }
 
   newContact() {
@@ -32,33 +70,9 @@ export class ContactInfoFormComponent implements OnInit {
     this.contactInfo.contacts.push(contact);
   }
 
-  submit() {
-    this.submitted = true;
-
-    this.contactInfo.name = this.contactInfoForm.get("name").value;
-    this.contactInfo.lastname = this.contactInfoForm.get("lastname").value;
-
-    if (this.contactInfoForm.valid) {
-      this.addNewContactInfo.emit(this.contactInfo);
-      this.cleanForm();
-    }
-  }
-
-  cancel() {
-    this.cleanForm();
-    this.cleanUpdate.emit({ name: null, lastname: null, contacts: [] });
-  }
-
-  cleanForm() {
-    this.submitted = false;
-    let newContact:Icontactinfo = { name: null, lastname: null, contacts: [] };
-    this.contactInfo = newContact;
-    this.contactInfoForm.setValue({ name: null, lastname: null })
-  }
-
   deleteContact(index: number) {
     this.contactInfo.contacts.splice(index, 1);
   }
 
-  get formControls() { return this.contactInfoForm.controls; }
+  
 }
