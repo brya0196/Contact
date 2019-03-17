@@ -18,6 +18,7 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.contactInfo) this.cleanForm();
   }
 
   newContact() {
@@ -27,10 +28,20 @@ export class ContactInfoFormComponent implements OnInit {
 
   submit() {
     this.addNewContactInfo.emit(this.contactInfo);
+    this.cleanForm();
   }
 
   cancel() {
+    this.cleanForm();
+    this.cleanUpdate.emit({ name: null, lastname: null, contacts: [] });
+  }
+
+  cleanForm() {
     let newContact:Icontactinfo = { name: null, lastname: null, contacts: [] };
-    this.cleanUpdate.emit(newContact);
+    this.contactInfo = newContact;
+  }
+
+  deleteContact(index: number) {
+    this.contactInfo.contacts.splice(index, 1);
   }
 }
