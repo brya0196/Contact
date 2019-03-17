@@ -7,8 +7,6 @@ import { IContact } from '../interfaces/icontact';
   providedIn: 'root'
 })
 export class ContactService {
-  contacts: Array<IContact>;
-
   constructor(private http: HttpClient) {}
 
   public getContact(): Observable<any> {
