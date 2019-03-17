@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IContact } from '../../interfaces/icontact';
 import { Icontactinfo } from '../../interfaces/icontactinfo';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-info-form',
@@ -13,11 +14,16 @@ export class ContactInfoFormComponent implements OnInit {
   @Output() addNewContactInfo = new EventEmitter();
   @Output() cleanUpdate = new EventEmitter();
 
-  constructor() {
-    
-  }
+  contactInfoForm: FormGroup;
+  submitted = false;
+
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.contactInfoForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      lastname: ['', Validators.required]
+    });
     if (!this.contactInfo) this.cleanForm();
   }
 
@@ -27,8 +33,15 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   submit() {
-    this.addNewContactInfo.emit(this.contactInfo);
-    this.cleanForm();
+    this.submitted = true;
+
+    this.contactInfo.name = this.contactInfoForm.get("name").value;
+    this.contactInfo.lastname = this.contactInfoForm.get("lastname").value;
+
+    if (this.contactInfoForm.valid) {
+      this.addNewContactInfo.emit(this.contactInfo);
+      this.cleanForm();
+    }
   }
 
   cancel() {
@@ -37,11 +50,15 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   cleanForm() {
+    this.submitted = false;
     let newContact:Icontactinfo = { name: null, lastname: null, contacts: [] };
     this.contactInfo = newContact;
+    this.contactInfoForm.setValue({ name: null, lastname: null })
   }
 
   deleteContact(index: number) {
     this.contactInfo.contacts.splice(index, 1);
   }
+
+  get formControls() { return this.contactInfoForm.controls; }
 }
