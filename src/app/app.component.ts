@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   contactsInfo: Array<Icontactinfo>
   contactInfo: Icontactinfo;
   isUpdate: boolean = false;
+  showForm: boolean = false;
 
   constructor(private contactService: ContactService) { }
 
@@ -24,17 +25,23 @@ export class AppComponent implements OnInit {
     });
   }
 
+  toggleForm() {
+    this.showForm = true;
+  }
+
   addNewContactInfo(newContactInfo: Icontactinfo) {
     this.contactsInfo.push(newContactInfo);
   }
 
   updateContactInfo(contactInfo: Icontactinfo) {
     this.isUpdate = true;
+    this.showForm = true;
     this.contactInfo = contactInfo;
   }
 
   cleanContactInfo(event: IUpdateform) {
     this.contactInfo = event.contact;
     this.isUpdate = event.isUpdate
+    this.showForm = event.showForm
   }
 }

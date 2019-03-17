@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChange
 import { IContact } from '../../interfaces/icontact';
 import { Icontactinfo } from '../../interfaces/icontactinfo';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { IUpdateform } from 'src/app/interfaces/iupdateform';
 
 @Component({
   selector: 'app-contact-info-form',
@@ -65,7 +66,8 @@ export class ContactInfoFormComponent implements OnChanges, OnInit {
 
   cancel() {
     this.cleanForm();
-    this.cleanUpdate.emit({ contact: { name: null, lastname: null, contacts: [] }, isUpdate: false });
+    const clear: IUpdateform = { contact: { name: null, lastname: null, contacts: [] }, isUpdate: false, showForm: false };
+    this.cleanUpdate.emit(clear);
   }
 
   newContact() {
