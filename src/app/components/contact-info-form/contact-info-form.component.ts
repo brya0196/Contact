@@ -16,6 +16,7 @@ export class ContactInfoFormComponent implements OnChanges, OnInit {
   @Output() cleanUpdate = new EventEmitter();
 
   contactInfoForm: FormGroup;
+  contacts: Array<IContact>;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder) {}
@@ -32,6 +33,7 @@ export class ContactInfoFormComponent implements OnChanges, OnInit {
     const contactInfo: SimpleChange = changes.contactInfo;
     if (contactInfo.currentValue) {
       this.contactInfoForm.setValue({ name: contactInfo.currentValue.name, lastname: contactInfo.currentValue.lastname });
+      this.contacts = JSON.parse( JSON.stringify(contactInfo.currentValue.contacts) );
     }
   }
 
@@ -51,6 +53,7 @@ export class ContactInfoFormComponent implements OnChanges, OnInit {
 
       this.contactInfo.name = this.contactInfoForm.get("name").value;
       this.contactInfo.lastname = this.contactInfoForm.get("lastname").value;
+      this.contactInfo.contacts = this.contacts;
 
       console.log(this.isUpdate);
       if (!this.isUpdate) {
@@ -67,11 +70,11 @@ export class ContactInfoFormComponent implements OnChanges, OnInit {
 
   newContact() {
     let contact:IContact = { contactType: null, contact: null };
-    this.contactInfo.contacts.push(contact);
+    this.contacts.push(contact);
   }
 
   deleteContact(index: number) {
-    this.contactInfo.contacts.splice(index, 1);
+    this.contacts.splice(index, 1);
   }
 
   
