@@ -14,7 +14,6 @@ export class ContactFormComponent implements OnInit {
   contactTypes : Array<string> = [];
 
   constructor() { 
-    console.log(this.contact);
     this.contactTypes = [...this.contactTypesFormater()];
   }
 

@@ -18,8 +18,7 @@ export class ContactInfoFormComponent implements OnInit {
 
   ngOnInit() {
     if (!this.contactInfo) {
-      let newContactInfo:Icontactinfo = { name: null, lastname: null, contacts: [] };
-      this.contactInfo = newContactInfo;
+      this.cancel();
     } 
   }
 
@@ -29,7 +28,11 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.contactInfo);
     this.addNewContactInfo.emit(this.contactInfo);
+  }
+
+  cancel() {
+    let newContactInfo:Icontactinfo = { name: null, lastname: null, contacts: [] };
+    this.contactInfo = newContactInfo;
   }
 }

@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Contact';
 
   contactsInfo: Array<Icontactinfo>
+  contactInfo: Icontactinfo;
 
   constructor(private contactService: ContactService) { 
     this.getContacts();
@@ -24,5 +25,9 @@ export class AppComponent {
 
   addNewContactInfo(newContactInfo: Icontactinfo) {
     this.contactsInfo.push(newContactInfo);
+  }
+
+  updateContactInfo(contactInfo: Icontactinfo) {
+    this.contactInfo = contactInfo;
   }
 }
