@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ContactService } from './services/contact.service';
+import { Icontactinfo } from './interfaces/icontactinfo';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Contact';
+
+  contactsInfo: Array<Icontactinfo>
+
+  constructor(private contactService: ContactService) { 
+    this.contactService.getContact().subscribe(data => {
+      this.contactsInfo = [...data];
+    });
+  }
 }
