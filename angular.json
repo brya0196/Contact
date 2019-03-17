@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "./node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js",
               "src/styles.css"
             ],
             "scripts": [],
@@ -81,7 +81,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "./node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.umd.js",
               "src/styles.css"
             ],
             "scripts": [],
