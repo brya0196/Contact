@@ -21,4 +21,8 @@ export class AppComponent {
       this.contactsInfo = [...data];
     });
   }
+
+  addNewContactInfo(newContactInfo: Icontactinfo) {
+    this.contactsInfo.push(newContactInfo);
+  }
 }

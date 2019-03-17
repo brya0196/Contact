@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IContact } from '../../interfaces/icontact';
 import { Icontactinfo } from '../../interfaces/icontactinfo';
 
@@ -10,6 +10,7 @@ import { Icontactinfo } from '../../interfaces/icontactinfo';
 export class ContactInfoFormComponent implements OnInit {
 
   @Input() contactInfo: Icontactinfo
+  @Output() addNewContactInfo = new EventEmitter();
 
   constructor() {
     
@@ -29,5 +30,6 @@ export class ContactInfoFormComponent implements OnInit {
 
   submit() {
     console.log(this.contactInfo);
+    this.addNewContactInfo.emit(this.contactInfo);
   }
 }
