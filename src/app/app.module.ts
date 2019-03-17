@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 // material
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContactCardComponent } from './contact-card/contact-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    ContactCardComponent
   ],
   imports: [
     BrowserModule,
