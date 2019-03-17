@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Contacts App</a>
-  <ul class="navbar-nav mr-auto justify-content-end w-100">
+  <ul class="navbar-nav justify-content-end ml-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#" (click)="toggleForm()">Add Contact</a>
       </li>
@@ -9,11 +9,11 @@
 
 <div class="container my-4">
   <div class="row justify-content-center" [ngClass]="{ 'd-none': !showForm }">
-      <app-contact-info-form class="col-6" [contactInfo]="contactInfo" [isUpdate]="isUpdate" (addNewContactInfo)="addNewContactInfo($event)" (cleanUpdate)="cleanContactInfo($event)"></app-contact-info-form>
+      <app-contact-info-form class="col-sm-12 col-md-8 col-lg-6" [contactInfo]="contactInfo" [isUpdate]="isUpdate" (addNewContactInfo)="addNewContactInfo($event)" (cleanUpdate)="cleanContactInfo($event)"></app-contact-info-form>
   </div>
   
   <div class="row mt-1">
-    <app-contact-card class="col-3 mx-4 my-2" *ngFor="let contactInfo of contactsInfo" [contactInfo]="contactInfo" (click)="updateContactInfo(contactInfo)"></app-contact-card>
+    <app-contact-card class="col-sm-12 col-md-6 col-lg-3 mx-4 my-2" *ngFor="let contactInfo of contactsInfo" [contactInfo]="contactInfo" (click)="updateContactInfo(contactInfo)"></app-contact-card>
   </div>
 </div>
 
