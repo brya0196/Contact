@@ -2,7 +2,11 @@
   <a class="navbar-brand" href="#">Contacts App</a>
   <ul class="navbar-nav justify-content-end ml-auto">
       <li class="nav-item">
-        <a class="nav-link btn btn-outline-info" href="#" (click)="toggleForm()">Add Contact</a>
+        <a class="nav-link" href="#" (click)="toggleView()" [hidden]="table">Show in cards</a>
+        <a class="nav-link" href="#" (click)="toggleView()" [hidden]="!table">Show in table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="toggleForm()">Add Contact</a>
       </li>
     </ul>
 </nav>
@@ -12,8 +16,11 @@
       <app-contact-info-form class="col-sm-12 col-md-8 col-lg-6" [contactInfo]="contactInfo" [isUpdate]="isUpdate" (addNewContactInfo)="addNewContactInfo($event)" (cleanUpdate)="cleanContactInfo($event)"></app-contact-info-form>
   </div>
   
-  <div class="row mt-1">
+  <div class="row mt-1" [hidden]="table">
     <app-contact-card class="col-sm-12 col-md-6 col-lg-3 mx-4 my-2" *ngFor="let contactInfo of contactsInfo" [contactInfo]="contactInfo" (click)="updateContactInfo(contactInfo)"></app-contact-card>
+  </div>
+  <div class="mt-1" [hidden]="!table">
+    <app-contacts [contactsInfo]="contactsInfo" (updateContact)="updateContactInfo($event)"></app-contacts>
   </div>
 </div>
 

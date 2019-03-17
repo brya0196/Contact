@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   contactInfo: Icontactinfo;
   isUpdate: boolean = false;
   showForm: boolean = false;
+  table: boolean = true;
 
   constructor(private contactService: ContactService) { }
 
@@ -27,6 +28,10 @@ export class AppComponent implements OnInit {
 
   toggleForm() {
     this.showForm = true;
+  }
+
+  toggleView() {
+    this.table = !this.table;
   }
 
   addNewContactInfo(newContactInfo: Icontactinfo) {
