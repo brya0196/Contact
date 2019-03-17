@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleForm() {
-    this.showForm = true;
+    this.showForm = !this.showForm;
   }
 
   toggleView() {

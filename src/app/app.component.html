@@ -6,7 +6,8 @@
         <a class="nav-link" href="#" (click)="toggleView()" [hidden]="!table">Show in table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleForm()">Add Contact</a>
+        <a class="nav-link" href="#" (click)="toggleForm()" [hidden]="showForm">Add Contact</a>
+        <a class="nav-link" href="#" (click)="toggleForm()" [hidden]="!showForm">Close Form</a>
       </li>
     </ul>
 </nav>
