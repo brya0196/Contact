@@ -6,7 +6,7 @@ import { IContact } from '../interfaces/icontact';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactServiceService {
+export class ContactService {
   contacts: Array<IContact>;
 
   constructor(private http: HttpClient) { 
@@ -17,6 +17,6 @@ export class ContactServiceService {
   }
 
   public getContact(): Observable<any> {
-    return this.http.get("./contact-api.json");
+    return this.http.get("assets/contact-api.json");
   }
 }
