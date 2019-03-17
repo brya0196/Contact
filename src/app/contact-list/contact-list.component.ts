@@ -9,14 +9,14 @@ import { Icontactinfo } from '../interfaces/icontactinfo';
 })
 export class ContactListComponent implements OnInit {
 
-  contactInfo: Array<Icontactinfo>
+  contactsInfo: Array<Icontactinfo>
 
   constructor(private contactService: ContactService) { }
 
   ngOnInit() {
     this.contactService.getContact().subscribe(data => {
-      this.contactInfo =  [...data];
-      console.log(this.contactInfo);
+      this.contactsInfo =  [...data];
+      console.log(this.contactsInfo);
     });
   }
 
