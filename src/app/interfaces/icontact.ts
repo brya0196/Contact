@@ -1,4 +1,4 @@
 export interface IContact {
-    name:string,
-    lastname:string
+    contact: string,
+    contactType: number
 }
