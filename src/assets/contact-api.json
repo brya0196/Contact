@@ -32,12 +32,12 @@
         "lastname": "Doe",
         "contacts": [
             {
-                "contact": "8092222222",
+                "contact": "809-222-2222",
                 "contactType": 1
             },
             {
-                "contact": "8092222222",
-                "contactType": 1
+                "contact": "ryan.01@outlook.es",
+                "contactType": 3
             }
         ]
     }

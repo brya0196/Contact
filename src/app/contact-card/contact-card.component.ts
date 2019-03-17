@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Icontactinfo } from '../interfaces/icontactinfo';
+import { ContactType } from '../enums/contact-type.enum';
 
 @Component({
   selector: 'app-contact-card',
@@ -17,4 +18,8 @@ export class ContactCardComponent implements OnInit {
     console.log(this.contactInfo);
   }
 
+  setContactType(type) {
+    return ContactType[type];
+  }
+ 
 }

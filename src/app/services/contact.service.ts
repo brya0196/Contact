@@ -9,7 +9,7 @@ import { IContact } from '../interfaces/icontact';
 export class ContactService {
   constructor(private http: HttpClient) {}
 
-  public getContact(): Observable<any> {
+  public getContacts(): Observable<any> {
     return this.http.get("assets/contact-api.json");
   }
 }

@@ -11,5 +11,5 @@ export class ContactFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }

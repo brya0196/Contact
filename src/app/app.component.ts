@@ -13,7 +13,11 @@ export class AppComponent {
   contactsInfo: Array<Icontactinfo>
 
   constructor(private contactService: ContactService) { 
-    this.contactService.getContact().subscribe(data => {
+    this.getContacts();
+  }
+
+  getContacts() {
+    this.contactService.getContacts().subscribe(data => {
       this.contactsInfo = [...data];
     });
   }
