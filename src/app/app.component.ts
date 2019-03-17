@@ -30,4 +30,8 @@ export class AppComponent {
   updateContactInfo(contactInfo: Icontactinfo) {
     this.contactInfo = contactInfo;
   }
+
+  cleanContactInfo(contactInfo: Icontactinfo) {
+    this.contactInfo = contactInfo;
+  }
 }

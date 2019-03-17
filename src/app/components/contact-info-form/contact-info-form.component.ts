@@ -11,15 +11,13 @@ export class ContactInfoFormComponent implements OnInit {
 
   @Input() contactInfo: Icontactinfo
   @Output() addNewContactInfo = new EventEmitter();
+  @Output() cleanUpdate = new EventEmitter();
 
   constructor() {
     
   }
 
   ngOnInit() {
-    if (!this.contactInfo) {
-      this.cancel();
-    } 
   }
 
   newContact() {
@@ -32,7 +30,7 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   cancel() {
-    let newContactInfo:Icontactinfo = { name: null, lastname: null, contacts: [] };
-    this.contactInfo = newContactInfo;
+    let newContact:Icontactinfo = { name: null, lastname: null, contacts: [] };
+    this.cleanUpdate.emit(newContact);
   }
 }
