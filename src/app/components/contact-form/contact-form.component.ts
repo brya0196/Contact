@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ContactType } from '../enums/contact-type.enum';
-import { IContact } from '../interfaces/icontact';
+import { Component, OnInit, Input } from '@angular/core';
+import { ContactType } from '../../enums/contact-type.enum';
+import { IContact } from '../../interfaces/icontact';
 
 @Component({
   selector: 'app-contact-form',

@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { IContact } from '../interfaces/icontact';
-import { Icontactinfo } from '../interfaces/icontactinfo';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Input } from '@angular/core';
+import { IContact } from '../../interfaces/icontact';
+import { Icontactinfo } from '../../interfaces/icontactinfo';
 
 @Component({
   selector: 'app-contact-info-form',

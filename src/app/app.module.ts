@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
-import { ContactCardComponent } from './contact-card/contact-card.component';
-import { ContactInfoFormComponent } from './contact-info-form/contact-info-form.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactCardComponent } from './components/contact-card/contact-card.component';
+import { ContactInfoFormComponent } from './components/contact-info-form/contact-info-form.component';
 
 @NgModule({
   declarations: [

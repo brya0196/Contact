@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Icontactinfo } from '../interfaces/icontactinfo';
-import { ContactType } from '../enums/contact-type.enum';
+import { Icontactinfo } from '../../interfaces/icontactinfo';
+import { ContactType } from '../../enums/contact-type.enum';
 
 @Component({
   selector: 'app-contact-card',
