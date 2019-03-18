@@ -1,13 +1,15 @@
 <table class="table table-bordered table-hover text-center">
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Contact Type</th>
       <th>Contact</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contactInfo of contactList">
+    <tr *ngFor="let contactInfo of contactList" >
+      <td><button type="button" class="btn btn-info" (click)="setUpdate(contactInfo)">Edit</button></td>
       <td>{{ contactInfo.name }} {{ contactInfo.lastname }}</td>
       <td *ngFor="let contactData of contactInfo.contacts | slice:0:1">{{ setContactType(contactData.contactType) }}</td>
       <td *ngFor="let contactData of contactInfo.contacts | slice:0:1">{{ contactData.contact }}</td>
